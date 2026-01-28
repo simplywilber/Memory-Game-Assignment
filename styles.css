@@ -1,0 +1,32 @@
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(4, 100px);
+  gap: 10px;
+  justify-items: center;
+  margin: 20px auto;
+}
+
+.card {
+  width: 100px;
+  height: 100px;
+  background-color: #1e90ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+  border-radius: 10px;
+  user-select: none;
+    transition: transform 0.3s, background-color 0.3s;
+
+}
+
+.card.flipped {
+  background-color: #ff6347;
+    transform: rotateY(180deg);
+
+}
+.hidden {
+  display: none;
+}
