@@ -25,6 +25,7 @@ let matches = 0;
 let gameStarted = false;
 let timer = 0;
 let timerInterval = null;
+let lockBoard = false;
 
 startButton.addEventListener("click", startGame);
 difficultySelect.addEventListener("change", initBoard);
@@ -65,7 +66,7 @@ function startGame() {
 
 /* Card Logic */
 function flipCard(card) {
-  if (!gameStarted || card === firstCard || card.classList.contains("flipped")) return;
+  if (!gameStarted || lockBoard || card === firstCard || card.classList.contains("flipped")) return;
 
   flipSound.currentTime = 0;
   flipSound.play();
@@ -79,6 +80,7 @@ function flipCard(card) {
   }
 
   secondCard = card;
+  lockBoard = true;
   moves++;
   moveCount.textContent = moves;
 
@@ -108,6 +110,7 @@ function checkMatch() {
 function resetTurn() {
   firstCard = null;
   secondCard = null;
+  lockBoard = false;
 }
 
 /* Timer */
